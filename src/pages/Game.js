@@ -4,18 +4,15 @@ const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
 const GND_LEVEL = 100;
 const SIZE = 50;
-const GRAVITY = 5;
-const FORCE = 80;
+const GRAVITY = 3.5;
+const FORCE = 50;
 const P_GAP = 200;
 const P_WIDTH = 100;
 const SPEED = 5;
 const FPS = 20;
 
 const isCollision = (planeY, pipeLen) => {
-  if (planeY < pipeLen || planeY + SIZE > pipeLen + P_GAP) {
-    return true;
-  }
-  return false;
+  return planeY - SIZE / 2 < pipeLen || planeY + SIZE / 2 > pipeLen + P_GAP;
 };
 
 const STORAGE_KEY = 'TPY_PLANE_HISCORE';
@@ -57,14 +54,14 @@ const Game = () => {
         return () => clearInterval(timeId);
       } else {
         setPipeX(WIDTH + P_WIDTH);
-        setPipeLen(Math.random() * 200 + 50);
+        setPipeLen(Math.random() * 100 + 100);
         setPassed(false);
       }
     }
   }, [pipeX, gameOver]);
 
   useEffect(() => {
-    if (Math.abs(pipeX - planeX) < SIZE) {
+    if (Math.abs(pipeX + P_WIDTH / 2 - planeX) < SIZE) {
       if (isCollision(planeY, pipeLen)) {
         setGameover(true);
       }
