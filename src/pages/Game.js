@@ -110,10 +110,6 @@ const Game = () => {
     <>
       <S.Game w={WIDTH} h={HEIGHT} onClick={() => handleClick()}>
         {started ? null : <StartScreen startGame={startGame} />}
-        <S.ScoreHeader>
-          <span>Score: {score}</span>
-          <span>Best: {hiScore}</span>
-        </S.ScoreHeader>
         <S.TopPipe x={pipeX} w={P_WIDTH} bottom={HEIGHT - pipeLen} />
         <S.BotPipe
           top={HEIGHT - (HEIGHT - pipeLen - P_GAP)}
@@ -122,6 +118,10 @@ const Game = () => {
         />
         <S.Plane x={planeX} y={planeY} size={SIZE} />
         <S.Ground top={HEIGHT - GND_LEVEL} />
+        <S.ScoreHeader>
+          <span>Score: {score}</span>
+          <span>Best: {hiScore}</span>
+        </S.ScoreHeader>
         {gameOver ? <GameOverScreen restart={restart} /> : null}
       </S.Game>
     </>
