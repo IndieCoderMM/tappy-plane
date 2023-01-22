@@ -27,7 +27,7 @@ const Plane = styled.div.attrs((props) => ({
   height: ${(props) => props.size}px;
   /* background-color: yellow; */
   background-image: url(${PlaneRed});
-  background-size: contain;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: top left;
 `;
@@ -78,11 +78,55 @@ const ScoreHeader = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  color: red;
-  font-size: 2rem;
+  color: goldenrod;
+  font-size: 1em;
   padding: 0.25rem;
 `;
 
-const S = { Game, Plane, TopPipe, BotPipe, Ground, ScoreHeader };
+const Button = styled.button`
+  background-color: goldenrod;
+  color: #000;
+  font-family: 'Press Start 2P', cursive;
+  padding: 1rem;
+  border-radius: 3px;
+  font-size: 1.1rem;
+  &:hover {
+    background-color: yellow;
+  }
+`;
+
+const Screen = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: ${(props) => props.color || 'transparent'};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const TitleText = styled.div`
+  background-image: url(${(props) => props.img});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 90%;
+  height: 100px;
+`;
+
+const S = {
+  Game,
+  Plane,
+  TopPipe,
+  BotPipe,
+  Button,
+  Ground,
+  ScoreHeader,
+  Screen,
+  TitleText,
+};
 
 export default S;
