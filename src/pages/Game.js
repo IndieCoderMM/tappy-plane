@@ -7,11 +7,12 @@ const WIDTH = window.innerWidth > 548 ? 548 : window.innerWidth;
 const HEIGHT = window.innerHeight;
 const GND_LEVEL = 100;
 const SIZE = 50;
-const GRAVITY = 3.5;
-const FORCE = 50;
+const GRAVITY = 0.1;
+const FORCE = -3;
+const MAX_FORCE = -5;
 const P_GAP = 200;
 const P_WIDTH = 100;
-const SPEED = 5;
+const SPEEDX = 5;
 const FPS = 20;
 
 const STORAGE_KEY = 'TPY_PLANE_HISCORE';
@@ -32,6 +33,7 @@ const Game = () => {
   const [started, setStarted] = useState(false);
   const [gameOver, setGameover] = useState(false);
   const [planeY, setPlaneY] = useState(HEIGHT / 2);
+  const [planeV, setPlaneV] = useState(-2);
   const [pipeX, setPipeX] = useState(WIDTH);
   const [pipeLen, setPipeLen] = useState(200);
   const [passed, setPassed] = useState(false);
@@ -42,12 +44,13 @@ const Game = () => {
     if (started) {
       if (!gameOver && planeY < HEIGHT - SIZE - GND_LEVEL) {
         timeId = setInterval(() => {
-          setPlaneY((planeY) => planeY + GRAVITY);
+          setPlaneV((planeV) => planeV + GRAVITY);
+          setPlaneY((planeY) => planeY + planeV);
         }, FPS);
       } else setGameover(true);
       return () => clearInterval(timeId);
     }
-  }, [planeY, started, gameOver]);
+  }, [planeY, planeV, started, gameOver]);
 
   useEffect(() => {
     let timeId;
@@ -55,7 +58,7 @@ const Game = () => {
     if (started && !gameOver) {
       if (pipeX > -P_WIDTH) {
         timeId = setInterval(() => {
-          setPipeX((pipeX) => pipeX - SPEED);
+          setPipeX((pipeX) => pipeX - SPEEDX);
         }, FPS);
         return () => clearInterval(timeId);
       } else {
@@ -89,17 +92,21 @@ const Game = () => {
     if (gameOver) storeHiScore(hiScore);
   }, [gameOver, hiScore]);
 
-  const handleClick = () => {
+  const boostPlane = () => {
     if (!started || gameOver) return;
-    setPlaneY((planeY) => planeY - FORCE);
+    setPlaneV((planeV) => {
+      if (planeV < 0 && planeV < MAX_FORCE) return planeV - 1;
+      return FORCE;
+    });
   };
 
   const restart = () => {
-    setGameover(false);
     setScore(0);
-    setPipeX(WIDTH + P_WIDTH);
+    setGameover(false);
+    setPlaneV(-2);
     setPlaneY(HEIGHT / 2);
     setPassed(false);
+    setPipeX(WIDTH + P_WIDTH);
   };
 
   const startGame = () => {
@@ -108,7 +115,7 @@ const Game = () => {
 
   return (
     <>
-      <S.Game w={WIDTH} h={HEIGHT} onClick={() => handleClick()}>
+      <S.Game w={WIDTH} h={HEIGHT} onClick={boostPlane}>
         {started ? null : <StartScreen startGame={startGame} />}
         <S.TopPipe x={pipeX} w={P_WIDTH} bottom={HEIGHT - pipeLen} />
         <S.BotPipe
