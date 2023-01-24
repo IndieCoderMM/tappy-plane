@@ -84,14 +84,17 @@ const ScoreHeader = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: goldenrod;
-  color: #000;
-  font-family: 'Press Start 2P', cursive;
+  background-color: yellow;
   padding: 1rem;
-  border-radius: 3px;
-  font-size: 1.1rem;
-  &:hover {
-    background-color: yellow;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  box-shadow: 0 3px 3px rgba(130, 130, 130, 0.6);
+
+  &:active {
+    background-color: salmon;
+    transform: translateY(2px) scaleY(0.9);
+    box-shadow: 0 1px 3px rgba(130, 130, 130, 0.6);
   }
 `;
 
