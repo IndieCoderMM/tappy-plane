@@ -118,11 +118,15 @@ const Game = () => {
         />
         <S.Plane x={PLANE_X} y={planeY} size={SIZE} />
         <S.Ground top={HEIGHT - GND_LEVEL} />
-        <S.ScoreHeader>
-          <span>Score: {score}</span>
-          <span>Best: {hiScore}</span>
-        </S.ScoreHeader>
-        {gameOver ? <GameOverScreen restart={restart} /> : null}
+
+        {gameOver ? (
+          <GameOverScreen restart={restart} score={score} hiScore={hiScore} />
+        ) : (
+          <S.ScoreHeader>
+            <span>Score: {score}</span>
+            <span>Best: {hiScore}</span>
+          </S.ScoreHeader>
+        )}
       </S.Game>
     </>
   );

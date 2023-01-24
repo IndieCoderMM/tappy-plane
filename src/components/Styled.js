@@ -120,6 +120,19 @@ const TitleText = styled.div`
   height: 100px;
 `;
 
+const ScoreBoard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px #333;
+  padding: 3rem 0;
+  min-width: 60%;
+  font-size: 1.5rem;
+`;
+
 const S = {
   Game,
   Plane,
@@ -130,6 +143,7 @@ const S = {
   ScoreHeader,
   Screen,
   TitleText,
+  ScoreBoard,
 };
 
 export default S;
