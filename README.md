@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+- [🕹 Tappy Plane](#-tappy-plane)
+  - [📱 Features](#-features)
+  - [⚙ Built With](#-built-with)
+  - [🚀 Getting Started](#-getting-started)
+  - [🤝 Contribution](#-contribution)
+  - [📧 Contact](#-contact)
+  - [💖 Show Your Support](#-show-your-support)
+  - [💎 Resources](#-resources)
+  - [📜 License](#-license)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# 🕹 Tappy Plane
 
-In the project directory, you can run:
+**Tappy Plane** is a mobile-first 2D game, inspired by the popular game [Flappy Bird](https://flappybird.io/). It includes a leaderboard to track highscores and compete with other players from all over the world.
 
-### `npm start`
+## 📱 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Mobile-first design for optimal gameplay experience on smartphones and tablets
+- Real-time leaderboard that displays the highscore rankings of all players
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## ⚙ Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [ReactJS](https://reactjs.org/): JavaScript Library for building UI
+- [React Router](https://reactrouter.com/en/main): Library for routing and handling navigation
+- [Styled Component](https://styled-components.com/): Library for styling React components
+- [Create React App](https://create-react-app.dev/): Tool for bootstraping React Projects
+- [Render](https://render.com/): Hosting platform
 
-### `npm run build`
+## 🚀 Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone this repo: `git clone git@github.com:IndieCoderMM/tappy-plane.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm start`
+4. To deploy the game, run `npm run build` and deploy the `build` folder to your desired hosting platform.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🤝 Contribution
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I welcome any and all contributions to my project. If you have an idea for a new feature or found a bug, feel free to open an issue or submit a pull request.
 
-### `npm run eject`
+## 📧 Contact
+I am always looking for ways to improve my project. If you have any suggestions or ideas, I would love to hear from you.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[![Github](https://img.shields.io/badge/GitHub-673AB7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/IndieCoderMM)
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/hthant_oo)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/hthantoo)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hthant00chk@gmail.com)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 💖 Show Your Support
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If you like this project, please consider giving a ⭐. Your support is greatly appreciated.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 💎 Resources
 
-## Learn More
+- [Coding Flappy Bird from Scratch](https://youtu.be/QN_lFbUZodY)- Video tutorial
+- [Tappy Plane](https://www.kenney.nl/assets/tappy-plane)- Game assets from Kenney
+- [Flappy Bird](https://en.wikipedia.org/wiki/Flappy_Bird)- Original game that inspired this project
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📜 License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the [MIT License](LICENSE).
