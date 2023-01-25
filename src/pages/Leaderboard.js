@@ -88,12 +88,14 @@ const Leaderboard = () => {
       const response = await fetch(SCORE_URL);
       const data = await response.json();
       const scores = cleanScores(data.result).sort((a, b) => b.score - a.score);
-      const playerData = scores.find(
-        (i) => i.user.toLowerCase() === player.user.toLowerCase()
-      );
-      if (player.score > playerData.score) {
-        playerData.score = player.score;
-        postScores(player);
+      if (player.user !== 404) {
+        const playerData = scores.find(
+          (i) => i.user.toLowerCase() === player.user.toLowerCase(),
+        );
+        if (player.score > playerData.score) {
+          playerData.score = player.score;
+          postScores(player);
+        }
       }
       setScoreList(scores);
       setFetching(false);
@@ -107,10 +109,11 @@ const Leaderboard = () => {
     setTimeout(() => setPopUp(false), 3000);
   };
 
-  const joinLeaderboard = (name) => {
+  const joinLeaderboard = async (name) => {
     storeUserName(name);
     player.user = name;
-    postScores(player);
+    await postScores(player);
+    setFetching(true);
   };
 
   return (
