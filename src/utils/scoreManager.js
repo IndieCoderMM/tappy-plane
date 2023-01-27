@@ -12,3 +12,21 @@ export const cleanScores = (scorelist) => {
   }
   return cleanedList;
 };
+
+const LEADERBOARD_API_URL =
+  'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
+const LEADERBOARD_API_KEY = 'tCqyE62fDjlFuQ0B0Jqc';
+const SCORE_URL = LEADERBOARD_API_URL + LEADERBOARD_API_KEY + '/scores/';
+
+export const postScores = async (scoreData) => {
+  const response = await fetch(SCORE_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(scoreData),
+  });
+  return response.ok;
+};
+
+export const getScores = async () => await fetch(SCORE_URL);

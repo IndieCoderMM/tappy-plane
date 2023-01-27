@@ -7,24 +7,8 @@ import {
   getUserName,
   storeUserName,
 } from '../utils/storageManager';
-import { cleanScores } from '../utils/scoreManager';
+import { cleanScores, postScores, getScores } from '../utils/scoreManager';
 import UserForm from '../components/UserForm';
-
-const LEADERBOARD_API_URL =
-  'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
-const LEADERBOARD_API_KEY = '8TbHPOdTqye2wFjNL6xs';
-const SCORE_URL = LEADERBOARD_API_URL + LEADERBOARD_API_KEY + '/scores/';
-
-const postScores = async (scoreData) => {
-  const response = await fetch(SCORE_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(scoreData),
-  });
-  return response.ok;
-};
 
 const BoardDiv = styled.div`
   width: 100vw;
@@ -76,32 +60,38 @@ const Info = styled.p`
   text-align: center;
   color: ${(props) => props.color || 'white'};
 `;
-const player = { user: getUserName(), score: getHiScore() };
+
+const player = {
+  user: getUserName(),
+  score: getHiScore(),
+};
 
 const Leaderboard = () => {
   const [scoreList, setScoreList] = useState([]);
-  const [fetching, setFetching] = useState(true);
+  const [fetching, setFetching] = useState(false);
   const [popUp, setPopUp] = useState(false);
 
   useEffect(() => {
-    const getScores = async () => {
-      const response = await fetch(SCORE_URL);
+    const updateScores = async () => {
+      const response = await getScores();
       const data = await response.json();
-      const scores = cleanScores(data.result).sort((a, b) => b.score - a.score);
-      if (player.user !== 404) {
+      const scores = cleanScores(data.result);
+      if (scores.length && player.user !== 404) {
         const playerData = scores.find(
           (i) => i.user.toLowerCase() === player.user.toLowerCase(),
         );
+        player.score = getHiScore();
         if (player.score > playerData.score) {
           playerData.score = player.score;
-          postScores(player);
+          await postScores(playerData);
         }
       }
+      scores.sort((a, b) => b.score - a.score);
       setScoreList(scores);
       setFetching(false);
       showPopUp();
     };
-    getScores();
+    updateScores();
   }, [fetching]);
 
   const showPopUp = () => {
@@ -110,8 +100,8 @@ const Leaderboard = () => {
   };
 
   const joinLeaderboard = async (name) => {
-    storeUserName(name);
     player.user = name;
+    storeUserName(name);
     await postScores(player);
     setFetching(true);
   };

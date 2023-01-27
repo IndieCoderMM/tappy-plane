@@ -2,7 +2,7 @@ const HISCORE_KEY = 'TPY_PLANE_HISCORE';
 const USER_KEY = 'TPY_PLANE_USERNAME';
 
 export const getHiScore = () => {
-  return localStorage.getItem(HISCORE_KEY) || 0;
+  return parseInt(localStorage.getItem(HISCORE_KEY), 10) || 0;
 };
 
 export const getUserName = () => {
