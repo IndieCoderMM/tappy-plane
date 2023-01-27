@@ -36,7 +36,7 @@
 
 ## 🤝 Contribution
 
-I welcome any and all contributions to my project. If you have an idea for a new feature or found a bug, feel free to open an issue or submit a pull request.
+I welcome all contributions to my project. If you have an idea for a new feature or found a bug, feel free to open an issue or submit a pull request.
 
 ## 📧 Contact
 I am always looking for ways to improve my project. If you have any suggestions or ideas, I would love to hear from you.
