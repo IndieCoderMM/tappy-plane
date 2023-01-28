@@ -128,9 +128,60 @@ const ScoreBoard = styled.div`
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 3px 6px #333;
-  padding: 3rem 0;
+  padding: 3rem 2rem;
   min-width: 60%;
   font-size: 1.5rem;
+`;
+
+const BoardDiv = styled.div`
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  background-color: skyblue;
+  display: flex;
+  flex-direction: column;
+  max-width: 548px;
+  margin: 0 auto;
+  gap: 1rem;
+`;
+
+const Heading = styled.h2`
+  color: yellow;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.5rem;
+`;
+
+const Board = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: #000;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: inset 0 3px 14px rgba(30, 30, 130, 0.4);
+  min-height: 250px;
+  max-height: 400px;
+  overflow-y: scroll;
+
+  & li {
+    padding: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+`;
+
+const Info = styled.p`
+  text-align: center;
+  color: ${(props) => props.color || 'white'};
 `;
 
 const S = {
@@ -144,6 +195,11 @@ const S = {
   Screen,
   TitleText,
   ScoreBoard,
+  Board,
+  BoardDiv,
+  Heading,
+  BtnContainer,
+  Info,
 };
 
 export default S;
