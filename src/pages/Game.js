@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import S from '../components/Styled';
 import GameOverScreen from '../components/GameOverScreen';
 import StartScreen from '../components/StartScreen';
-import { getHiScore, storeHiScore } from '../utils/storageManager';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const WIDTH = window.innerWidth > 548 ? 548 : window.innerWidth;
 const HEIGHT = window.innerHeight;
@@ -22,7 +22,7 @@ const isCollision = (planeY, pipeLen) => {
 };
 
 const Game = () => {
-  const [hiScore, setHiScore] = useState(getHiScore());
+  const [data, setData] = useLocalStorage();
   const [started, setStarted] = useState(false);
   const [gameOver, setGameover] = useState(false);
   const [planeY, setPlaneY] = useState(HEIGHT / 2);
@@ -78,12 +78,8 @@ const Game = () => {
   }, [passed]);
 
   useEffect(() => {
-    if (score > hiScore) setHiScore(score);
-  }, [score, hiScore]);
-
-  useEffect(() => {
-    if (gameOver) storeHiScore(hiScore);
-  }, [gameOver, hiScore]);
+    if (score > data.score) setData({ ...data, score });
+  }, [score, data, setData]);
 
   const boostPlane = () => {
     if (!started || gameOver) return;
@@ -120,11 +116,15 @@ const Game = () => {
         <S.Ground top={HEIGHT - GND_LEVEL} />
 
         {gameOver ? (
-          <GameOverScreen restart={restart} score={score} hiScore={hiScore} />
+          <GameOverScreen
+            restart={restart}
+            score={score}
+            hiScore={data.score}
+          />
         ) : (
           <S.ScoreHeader>
             <span>Score: {score}</span>
-            <span>Best: {hiScore}</span>
+            <span>Best: {data.score}</span>
           </S.ScoreHeader>
         )}
       </S.Game>

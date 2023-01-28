@@ -1,22 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import S from './Styled';
 import ScoreItem from './ScoreItem';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getScores,
-  selectScores,
-  selectStatus,
-} from '../redux/leaderboard/leaderboard';
 
-const ScoreDisplay = () => {
-  const dispatch = useDispatch();
-  const scores = useSelector(selectScores);
-  const status = useSelector(selectStatus);
-
-  useEffect(() => {
-    if (status === 'idle') dispatch(getScores());
-  }, [status, dispatch]);
-
+const ScoreDisplay = ({ scores }) => {
   return (
     <S.Board>
       {scores.map((scoreItem, i) => (

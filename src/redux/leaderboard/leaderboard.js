@@ -39,6 +39,7 @@ const boardSlice = createSlice({
       .addCase(getScores.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.scores = action.payload.result;
+        console.log(state.scores);
       })
       .addCase(getScores.rejected, (state, action) => {
         state.status = 'failed';

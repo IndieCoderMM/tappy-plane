@@ -1,14 +1,23 @@
-const HISCORE_KEY = 'TPY_PLANE_HISCORE';
-const USER_KEY = 'TPY_PLANE_USERNAME';
-
-export const getHiScore = () => {
-  return parseInt(localStorage.getItem(HISCORE_KEY), 10) || 0;
+const STORAGE_KEY = 'TPY_PLANE_DATA';
+const initialData = {
+  user: 'unregister',
+  score: 0,
 };
 
-export const getUserName = () => {
-  return localStorage.getItem(USER_KEY) || 404;
+export const getLocalData = () => {
+  const data = localStorage.getItem(STORAGE_KEY);
+  return data ? JSON.parse(data) : initialData;
 };
 
-export const storeUserName = (name) => localStorage.setItem(USER_KEY, name);
+export const storeLocalData = ({ user, score }) => {
+  const data = {
+    user: user.toString().toLowerCase(),
+    score: parseInt(score, 10),
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+};
 
-export const storeHiScore = (score) => localStorage.setItem(HISCORE_KEY, score);
+export const getLocalHiscore = () => {
+  const data = getLocalData();
+  return data.score;
+};

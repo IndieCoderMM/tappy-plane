@@ -17,13 +17,14 @@ const NameInput = styled.input`
   box-shadow: inset 0 3px 6px rgba(50, 50, 50, 0.4);
 `;
 
-const UserForm = ({ joinLeaderboard }) => {
+const UserForm = ({ register }) => {
   const nameInput = useRef();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = nameInput.current.value.trim();
     if (name.length) {
-      joinLeaderboard(name);
+      register(name);
       nameInput.current.value = '';
     }
   };
