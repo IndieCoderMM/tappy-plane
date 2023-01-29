@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const LEADERBOARD_API_URL =
   'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
-const APP_ID = 'bAkBxLeiJeWyVQH7mSI7';
+const APP_ID = '7KWxkDBXl92gLIPrD0Uq';
 
 const http = axios.create({
   baseURL: LEADERBOARD_API_URL,

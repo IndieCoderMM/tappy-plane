@@ -1,6 +1,6 @@
-const STORAGE_KEY = 'TPY_PLANE_DATA';
+const STORAGE_KEY = 'TPY_PLANE_DATA_0123';
 const initialData = {
-  user: 'unregister',
+  user: 'null',
   score: 0,
 };
 
@@ -11,7 +11,7 @@ export const getLocalData = () => {
 
 export const storeLocalData = ({ user, score }) => {
   const data = {
-    user: user.toString().toLowerCase(),
+    user: user.toLowerCase(),
     score: parseInt(score, 10),
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));

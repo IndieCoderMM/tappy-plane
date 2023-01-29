@@ -8,7 +8,7 @@ const ScoreCleaner = (scores) => {
         if (data.score < item.score) data.score = item.score;
       }
     });
-    if (!dupes && item.user) cleanedList.push({ ...item });
+    if (!dupes) cleanedList.push({ ...item });
   });
   return cleanedList;
 };

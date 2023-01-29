@@ -34,6 +34,7 @@ const Leaderboard = () => {
 
   const refresh = () => {
     let registered = false;
+    if (data.user === 'null') return;
     for (let i of cleanedScores) {
       if (i.user === data.user) {
         registered = true;
@@ -54,7 +55,7 @@ const Leaderboard = () => {
         </NavLink>
         <S.Button onClick={refresh}>Refresh</S.Button>
       </S.BtnContainer>
-      {data.user !== 'unregister' ? null : <PlayerForm register={register} />}
+      {data.user !== 'null' ? null : <PlayerForm register={register} />}
     </S.BoardDiv>
   );
 };

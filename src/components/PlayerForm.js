@@ -24,7 +24,7 @@ const UserForm = ({ register }) => {
     e.preventDefault();
     const name = nameInput.current.value.trim();
     if (name.length) {
-      register(name);
+      register(name.toLowerCase());
       nameInput.current.value = '';
     }
   };
