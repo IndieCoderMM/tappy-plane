@@ -24,7 +24,7 @@
 - [ReactJS](https://reactjs.org/): JavaScript Library for building UI
 - [React Router](https://reactrouter.com/en/main): Library for routing and handling navigation
 - [Styled Component](https://styled-components.com/): Library for styling React components
-- [Create React App](https://create-react-app.dev/): Tool for bootstraping React Projects
+- [Leaderboard API](https://www.notion.so/Leaderboard-API-service-24c0c3c116974ac49488d4eb0267ade3): Service for storing and updating scores in real-time
 - [Render](https://render.com/): Hosting platform
 
 ## 🚀 Getting Started
